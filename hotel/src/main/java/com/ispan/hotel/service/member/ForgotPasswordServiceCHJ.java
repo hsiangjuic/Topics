@@ -21,9 +21,9 @@ public class ForgotPasswordServiceCHJ {
         if (emailExists(email)) {
             String verificationCode = generateRandomCode();
             emailService.sendVerificationCode(email, verificationCode);
-            saveVerificationCode(email, verificationCode); // Save the verification code
+            saveVerificationCode(email, verificationCode);
         } else {
-            // 如果找不到该 email，可以根据需要执行一些操作，比如返回错误消息给用户
+
         }
     }
 
@@ -33,7 +33,7 @@ public class ForgotPasswordServiceCHJ {
     }
 
     private String generateRandomCode() {
-        // 生成随机的六位数验证码
+        // 生成隨機六位數驗證碼
         StringBuilder sb = new StringBuilder();
         Random random = new Random();
         for (int i = 0; i < 6; i++) {
@@ -43,26 +43,23 @@ public class ForgotPasswordServiceCHJ {
     }
 
     private String getSavedVerificationCode(String email) {
-        // 从数据库中查找并返回之前保存的验证码
+        // 從資料庫查找並返回自己的驗證碼
         Optional<Customer> customerOptional = customerloginRepositoryCHJ.findByEmail(email);
         if (customerOptional.isPresent()) {
             Customer customer = customerOptional.get();
-            return customer.getVerificationCode(); // Assuming the verification code is stored in the Customer entity
+            return customer.getVerificationCode();
         } else {
-            return null; // No verification code found for the given email
+            return null;
         }
     }
 
     private void saveVerificationCode(String email, String verificationCode) {
-        // Save the verification code to the database
         Optional<Customer> customerOptional = customerloginRepositoryCHJ.findByEmail(email);
         if (customerOptional.isPresent()) {
             Customer customer = customerOptional.get();
-            customer.setVerificationCode(verificationCode); // Assuming the verification code is stored in the Customer
-                                                            // entity
-            customerloginRepositoryCHJ.save(customer); // Save the updated customer entity
-        } else {
-            // Handle the case where the customer does not exist
+            customer.setVerificationCode(verificationCode);
+
+            customerloginRepositoryCHJ.save(customer);
         }
     }
 

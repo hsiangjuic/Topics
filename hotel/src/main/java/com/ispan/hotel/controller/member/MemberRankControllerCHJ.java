@@ -221,7 +221,7 @@ public class MemberRankControllerCHJ {
 
     }
 
-    // 找圖囉!!!
+    // 找圖
     @GetMapping("/{mrId}")
     public ResponseEntity<byte[]> getPhoto(@PathVariable Integer mrId) {
         MemberRank member = memberService.findById(mrId);

@@ -183,7 +183,7 @@ public class CustomerloginControllerCHJ {
                 customerloginServiceCHJ.updateMemberStatus(email, "true");
                 return ResponseEntity.ok("電子郵件驗證成功");
             } else {
-                logger.info("Verification token not matched or expired"); // 添加日志语句
+                logger.info("Verification token not matched or expired");
                 // 令牌無效或已過期
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("電子郵件驗證失敗");
             }

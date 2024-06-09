@@ -9,6 +9,7 @@ import java.util.Random;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.ispan.hotel.model.Customer;
 import com.ispan.hotel.model.MemberRank;
@@ -109,22 +110,20 @@ public class CustomerloginServiceCHJ {
         Optional<Customer> customerOptional = customerloginRepositoryCHJ.findByEmail(email);
         if (customerOptional.isPresent()) {
             Customer customer = customerOptional.get();
-            return customer.getVerificationCode(); // Assuming the verification code is stored in the Customer entity
+            return customer.getVerificationCode();
         } else {
-            return null; // No verification code found for the given email
+            return null;
         }
     }
 
     private void saveVerificationCode(String email, String verificationCode) {
-        // Save the verification code to the database
+
         Optional<Customer> customerOptional = customerloginRepositoryCHJ.findByEmail(email);
         if (customerOptional.isPresent()) {
             Customer customer = customerOptional.get();
-            customer.setVerificationCode(verificationCode); // Assuming the verification code is stored in the Customer
-                                                            // entity
-            customerloginRepositoryCHJ.save(customer); // Save the updated customer entity
-        } else {
-            // Handle the case where the customer does not exist
+            customer.setVerificationCode(verificationCode);
+
+            customerloginRepositoryCHJ.save(customer);
         }
     }
 
@@ -137,9 +136,7 @@ public class CustomerloginServiceCHJ {
         if (emailExists(email)) {
             String verificationCode = generateRandomCode();
             emailService.sendVerificationCode(email, verificationCode);
-            saveVerificationCode(email, verificationCode); // Save the verification code
-        } else {
-            // 如果找不到该 email，可以根据需要执行一些操作，比如返回错误消息给用户
+            saveVerificationCode(email, verificationCode);
         }
     }
 

@@ -25,8 +25,8 @@ public class EmailServiceCHJ {
 
             helper.setTo(to);
             helper.setSubject(subject);
-
-            helper.setFrom(new InternetAddress("hsiangjuic@gmail.com", senderName, "UTF-8"));
+            // 寫上自己的gmail
+            helper.setFrom(new InternetAddress("@gmail.com", senderName, "UTF-8"));
             helper.setText(htmlContent, true); // HTML 格式
 
             emailSender.send(message);

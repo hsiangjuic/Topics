@@ -37,7 +37,7 @@ public class ForgotPasswordControllerCHJ {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    // 用户请求发送验证码，使用 GET 请求
+    // 用戶請求發送驗證碼，使用 GET 请求
     @GetMapping("/forgotpassword") // 使用 GetMapping
     public JSONObject sendVerificationCode(@RequestParam String email) {
         JSONObject response = new JSONObject();

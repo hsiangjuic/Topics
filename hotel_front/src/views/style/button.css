@@ -1,0 +1,96 @@
+/* 按鈕動態雷射特效 */
+.button1 {
+    position: relative;
+    background: linear-gradient(-45deg, gray, gray, gray, gray, gray, gray, gray, gray, gray, gray, gray, gray, gray, gray, gray, gray, gray, rgb(248, 247, 247), gray, gray, gray, gray, gray, gray, gray, gray, gray, gray, gray, gray, gray, gray, gray);
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+
+    transition: transform 0.3s ease;
+
+    animation: colorChange 4s steps(60) infinite;
+
+    background-size: 200% auto;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.button1:hover {
+    transform: translateY(2px);
+
+}
+
+
+.button1::before,
+.button1::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    animation: halo 4s infinite;
+    pointer-events: none;
+
+}
+
+.button1::before {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+
+    z-index: 1;
+
+}
+
+.button1::after {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+
+    z-index: 2;
+
+    transform: translate(3px, 3px);
+
+}
+
+
+/* .button1::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    animation: halo 2s infinite;
+} */
+
+@keyframes halo {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+
+@keyframes colorChange {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 100% 0;
+    }
+}

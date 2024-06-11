@@ -5,16 +5,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import NotFound from '../views/NotFound.vue';
 // import Login from "../views/secure/Login.vue"
-import routersBookingPages from "@/views/bookingPages/routers-bookingPages.js"
 
-import routersRestaurantPages from '@/views/restaurant/routers-restaurantPages';
-//back
-import routersMemberPages from '@/views/member/routers-memberPages';
-
-//front
-import routersNewsFront from '@/views/frontLatestNews/routers-front-news';
-
-import routersRoom from '@/views/Room/routers-room';
 
 import Login from "../views/member/Login.vue";
 import Customer from "../views/member/Customer.vue";
@@ -41,11 +32,9 @@ const routes = [
     //meta: { requiresAuth: true }這段是登錄綁定
     { name: "forgotpassword-link", path: "/pages/forgotpassword", component: Forgotpassword },
     { name: "customerupdate-link", path: "/pages/customerupdate", component: Customerupdate, meta: { requiresAuth: true } },
-    ...routersBookingPages,
-    ...routersRestaurantPages,
-    ...routersMemberPages,
-    ...routersNewsFront,
-    ...routersRoom
+
+
+
 ];
 
 //產生router物件

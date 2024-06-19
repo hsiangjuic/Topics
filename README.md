@@ -7,27 +7,27 @@
 
 # hotel 後端
 ## application.properties
-spring.jpa.hibernate.ddl-auto: **Hibernate** 在啟動時會根據實體類別自動建立、更新資料庫表結構的策略，這裡設定為update，表示自動更新。
-郵件配置:
-spring.mail.host=smtp.gmail.com  只支援Gmail.
-SMTP 伺服器，連接埠為587.
+spring.jpa.hibernate.ddl-auto: **Hibernate** 在啟動時會根據實體類別自動建立、更新資料庫表結構的策略，這裡設定為update，表示自動更新
+<br>郵件配置:
+spring.mail.host=smtp.gmail.com  只支援Gmail<br>
+SMTP 伺服器，連接埠為587<br>
 ## pom.xml
-**XML**        版本1.0        編碼UTF-8.
-**Maven POM**  版本4.0.0.
-版本號:開發中版本0.0.1-SNAPSHOT   將Maven項目打包成**WAR**文件.
+**XML**        版本1.0        編碼UTF-8<br>
+**Maven POM**  版本4.0.0<br>
+版本號:開發中版本0.0.1-SNAPSHOT   將Maven項目打包成**WAR**文件<br>
 屬性配置:
-**java**版本17.
-**log4j-core**版本2.17.1最新版2.17應該不會受log4j漏洞影響.
-**Servlet API**版本3.0.1在3.0提高對CSRF防護.
-spring-boot-starter-thymeleaf.
-spring-boot-starter-web.
-spring-boot-starter-mail寄信.
-spring-security-crypto輸入的密碼加密.
-spring-boot-starter-tomcat 10版本.
-spring-boot-devtools開發時用:自動重新啟動.
-lombok自動生成程式碼:例如:getter,setter.
-mssql-jdbc連接SQL.
-json版本20240303.
+**java**版本17<br>
+**log4j-core**版本2.17.1最新版2.17應該不會受log4j漏洞影響<br>
+**Servlet API**版本3.0.1在3.0提高對CSRF防護<br>
+spring-boot-starter-thymeleaf<br>
+spring-boot-starter-web<br>
+spring-boot-starter-mail寄信<br>
+spring-security-crypto輸入的密碼加密<br>
+spring-boot-starter-tomcat 10版本<br>
+spring-boot-devtools開發時用:自動重新啟動<br>
+lombok自動生成程式碼:例如:getter,setter<br>
+mssql-jdbc連接SQL<br>
+json版本20240303<br>
 
 # hotel_front
 

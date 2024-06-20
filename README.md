@@ -57,10 +57,38 @@ byte[] photoFile儲存會員卡圖片用<br>
 ## Service
 使用JavaMailSender介面。創建多用途互聯網郵件擴展發送郵件。MimeMessageHelper簡化發送郵件過程，設置寄件人名稱，主題。(允許HTML格式)郵件的樣式是在後端寫的。<br>
 **密碼重置**:功能<br>
-驗證碼:verificationCode隨著每封發送的郵件而不同<br>
+驗證碼使用隨機六位亂數:verificationCode隨著每封發送的郵件而不同<br>
 ![驗證碼圖](images/密碼重置.jpg)
 <br>
-**會員驗證信**
+**會員驗證信**:功能<br>
+verificationToken產生唯一識別碼(UUID)，字串方式傳回的驗證識別碼<br>
+使用Java 8 的ChronoUnit再給予的現在時間LocalDateTime增加分鐘，並保存在用戶資料庫<br>
+驗證信的連結:
+http://localhost:5173/pages/verificationSuccess?email=" + email + "&token="+ verificationToken;<br>
+這裡localhost:5173是前端port，用戶輸入的email，還有產生的token都包含在連結裡。<br>
+![驗證信圖](images/驗證信.jpg)<br>
+點擊驗證信<br>
+![驗證成功](images/驗證成功.jpg)<br>
+註冊後預設會員狀態為none，驗證成功後更新為true<br>
+
+![狀態更新](images/狀態更新.jpg)<br>
+如果沒在兩分鐘內點擊驗證連結的話，要重新註冊。<br>
+![驗證失效](images/驗證過期.jpg)<br>
+@Transactional如果發生異常，回復到修改前的狀態。<br>
+## Controller
+使用Spring框架的 RESTful API處理HTTP請求進行增刪改查操作<br>
+@RequestMapping將控制器所有請求對應到("/")路徑底下<br>
+@CrossOrigin跨域請求，為了使用前後端分離。<br>
+@Autowired依賴注入<br>
+使用JSONArray的array儲存每位房客的訊息，並且都表示為一個JSON物件添加到array<br>
+在Customer外鍵引用MemberRank資料，先判斷是否為空，避免空值產生異常。<br>
+日期格式化:只要更新資料就會更新日期為現在日期<br>
+用{username}使用者帳號來獲取用戶訊息<br>
+**圖片**:MultipartFile處理圖片上傳，不需像Base64進行編碼與解碼。前端直接使用後端返回的URL。
+
+
+
+
 
 
 

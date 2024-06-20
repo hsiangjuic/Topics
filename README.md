@@ -58,6 +58,7 @@ byte[] photoFile儲存會員卡圖片用<br>
 使用JavaMailSender介面。創建多用途互聯網郵件擴展發送郵件。MimeMessageHelper簡化發送郵件過程，設置寄件人名稱，主題。(允許HTML格式)郵件的樣式是在後端寫的。<br>
 **密碼重置**:功能<br>
 驗證碼:verificationCode隨著每封發送的郵件而不同<br>
+![驗證碼圖](images/密碼重置.jpg)
 
 
 

@@ -85,7 +85,7 @@ http://localhost:5173/pages/verificationSuccess?email=" + email + "&token="+ ver
 日期格式化:只要更新資料就會更新日期為現在日期<br>
 用{username}使用者帳號來獲取用戶訊息<br>
 **圖片**:MultipartFile處理圖片上傳，不需像Base64進行編碼與解碼。前端直接使用後端返回的URL。
-
+![圖片](images/圖片.jpg)<br>
 
 
 

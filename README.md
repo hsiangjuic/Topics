@@ -29,6 +29,39 @@ lombok自動生成程式碼:例如:getter,setter<br>
 mssql-jdbc連接SQL<br>
 json版本20240303<br>
 
+## JavaBean
+**Customer.java**:<br> 
+多對一MemberRank 的mr_id 使用@JsonIgnore  避免因為雙向關聯循環引用無限遞歸<br>
+verificationToken:<br>
+寄信時輸出專屬驗證碼到資料庫與驗證信的連結。<br>
+verificationTokenExpiration:<br>
+驗證信有效時間:LocalDateTime<br>
+lastModifiedDat:<br>
+物件持久化到資料庫之前先執行@PrePersist，如果為空值，使用現在時間，@PreUpdate在onUpdate()中，每次更新時，一併更新時間，顯示
+
+**MemberRank.java**:<br>
+@Lob儲存大型物件
+byte[]二進制儲存圖片
+
+
+**技術和框架**<br>
+Java Persistence API (JPA)<br>
+Jakarta Persistence (formerly Java EE Persistence)<br>
+Spring Framework<br>
+Java 8 Date-Time API<br>
+byte[] photoFile儲存會員卡圖片用<br>
+
+## AppConfig
+使用Spring Security提供的**BCryptPasswordEncoder**密碼加密器，提高安全性。調用@Bean方法會員註冊輸入密碼後會進行加密在放到資料庫裡。<br>
+
+## EmailService
+使用JavaMailSender介面。創建多用途互聯網郵件擴展發送郵件。MimeMessageHelper簡化發送郵件過程，設置寄件人名稱，主題。(允許HTML格式)郵件的樣式是在後端寫的。<br>
+**密碼重置**:功能<br>
+驗證碼:verificationCode隨著每封發送的郵件而不同<br>
+
+
+
+
 # hotel_front
 
 This template should help get you started developing with Vue 3 in Vite.

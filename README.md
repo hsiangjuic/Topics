@@ -122,6 +122,72 @@ npm run dev
 ```sh
 npm run build
 ```
+--------------------------------------------------------<br>
+使用Node.js 處理URL和文件路徑，使用Vite前端開發工具。<br>
+將URL物件轉換為文件路徑字串。<br>
+
+**@vitejs/plugin-vue** <br>負責處理.vue檔案的編譯與轉換。<br>
+alias:設定模組別名，這裡用@代表src目錄的路徑<br>
+
+**相關設定:**<br>
+目前版本v0.0.0<br>
+private:true 私有專案，不會被意外地發佈到 npm 上。<br>
+ES模組<br>
+FontAwesome:提供icon v6.5.2<br>
+axios:發送HTTP請求 v1.6.8<br>
+Bootstrap:提供樣式 v5.3.3<br>
+flatpickr:日期選擇器 v4.6.13<br>
+lodash:按下按鈕出現加載圖片 v4.17.21<br>
+sweetalert2: v11.11.0<br>
+vue: v3.4.7<br>
+vue-router:路由v4.3.2 <br>
+vuex:管理登入狀態訊息v4.1.0<br>
+@vitejs/plugin-vue:熱更新 v5.0.4<br>
+vite:v5.2.8<br>
+
+### .env
+VITE_BACKEND_URL=http://localhost:8080<br>
+
+### main.js
+使用vue3新引入的函數createApp創建vue應用<br>
+
+### index.js
+**vuex** 配置，管理全域狀態<br>
+使用vuex提供的函數createStore建立儲存實例<br>
+**state** 物件定義兩種狀態屬性:<br>
+username使用者帳號<br>
+isAuthenticated判斷是否通過郵件驗證，預設false <br>
+**mutations** 物件修改狀態<br>
+isAuthenticated :true<br>
+登出後isAuthenticated變成false<br>
+**getters** 物件定義獲取資料<br>
+<br>
+### router.js
+使用Vue Router中的一個功能**meta: { requiresAuth: true }**設定需要登入才能訪問的網頁<br>
+**router.beforeEach((to, from, next) => { ... });**每次訪問網頁時判斷是否經過登入驗證，若沒有則自動跳到登入的頁面<br>
+<br>
+註冊網頁:<br>
+總積分預設為0，會員等級預設為1，會員狀態預設none，以上使用type: 'hidden'隱藏後再註冊完後上傳至資料庫。<br>
+error-message將錯誤訊息顯示在輸入欄下方。<br>
+watch選項監控密碼欄位變化，密碼欄位改變，清空確認密碼欄位<br>
+動態載入機器人驗證API:https://www.google.com/recaptcha/api.js<br>
+
+![註冊](images/註冊.jpg)<br>
+會員編輯:<br>
+使用Vuex提供的mapState輔助函數。computed生成username屬性值
+axios.get(`/api/customers/${this.username}`)獲取登入的username<br>
+
+
+![註冊](images/會員編輯.jpg)<br>
+
+
+
+
+
+
+
+
+
 # hotel_backend
 
 This template should help get you started developing with Vue 3 in Vite.
@@ -151,3 +217,9 @@ npm run dev
 ```sh
 npm run build
 ```
+客戶編輯:(包含註冊過的會員與非會員)<br>
+檢查memberRank存在?不存在顯示非會員<br>
+根據memberStatus判斷為true則按鈕顯示禁用，其他的為啟用<br>
+![客戶編輯](images/客戶編輯.jpg)<br>
+
+

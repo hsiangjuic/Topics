@@ -178,11 +178,15 @@ watch選項監控密碼欄位變化，密碼欄位改變，清空確認密碼欄
 axios.get(`/api/customers/${this.username}`)獲取登入的username<br>
 
 
-![註冊](images/會員編輯.jpg)<br>
+![編輯](images/會員編輯.jpg)<br>
 
-
-
-
+忘記密碼:<br>
+先不顯示更新密碼的表單<br>
+![輸入郵件](images/輸入郵件.jpg)<br>
+輸入自己註冊時用的email<br>
+通過axios的GET請求查詢這個email，並同時發送驗證碼<br>
+輸入與資料庫email匹配的驗證碼，顯示更新密碼表單<br>
+![更新密碼](images/更新密碼.jpg)<br>
 
 
 
